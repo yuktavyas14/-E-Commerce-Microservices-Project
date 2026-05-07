@@ -1,0 +1,36 @@
+<mat-toolbar color="primary" class="navbar">
+  <div class="nav-container">
+    <div class="nav-left">
+      <button mat-button routerLink="/" class="logo">
+        <mat-icon>shopping_bag</mat-icon>
+        E-Commerce
+      </button>
+      @if (isAuthenticated()) {
+        <button mat-button routerLink="/products">Products</button>
+      }
+    </div>
+
+    <div class="nav-right">
+      @if (isAuthenticated()) {
+        <button mat-button [matMenuTriggerFor]="userMenu">
+          <mat-icon>account_circle</mat-icon>
+          {{ username() }}
+        </button>
+        <mat-menu #userMenu="matMenu">
+          <button mat-menu-item disabled>
+            <mat-icon>person</mat-icon>
+            <span>{{ currentUser()?.role }}</span>
+          </button>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+      } @else {
+        <button mat-button routerLink="/login">Login</button>
+        <button mat-raised-button color="accent" routerLink="/register">Register</button>
+      }
+    </div>
+  </div>
+</mat-toolbar>
+
