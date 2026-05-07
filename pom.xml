@@ -16,6 +16,7 @@
         <module>ApiGateway</module>
         <module>ProductService</module>
         <module>OrderService</module>
+        <module>UserService</module>
     </modules>
 
     <!-- Common Properties -->
